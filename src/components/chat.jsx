@@ -25,7 +25,7 @@ function Chats() {
         axios
             .get("https://api.chatengine.io/users/me", {
                 headers: {
-                    projectID: process.env.REACT_APP_CHAT_ENGINE_ID,
+                    'project-id': process.env.REACT_APP_CHAT_ENGINE_ID,
                     "user-name": user.email,
                     "user-secret": user.uid,
                 },
