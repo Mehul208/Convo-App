@@ -26,7 +26,7 @@ function Chats() {
         axios
             .get("https://api.chatengine.io/users/me", {
                 headers: {
-                    projectID: "72231f4e-572a-4842-8660-30fc7ae77cc3",
+                    projectID: process.env.REACT_APP_CHAT_ENGINE_ID,
                     "user-name": user.email,
                     "user-secret": user.uid,
                 },
@@ -43,10 +43,10 @@ function Chats() {
                 getFile(user.photoURL).then((avatar) => {
                     formdata.append("avatar", avatar, avatar.name);
                     axios
-                        .post("https://api.chatengine.io/users", formdata, {
+                        .post("https://api.chatengine.io/users/", formdata, {
                             headers: {
                                 "private-key":
-                                    "9ebe026f-78af-4548-97e3-5c9d488a8cce",
+                                    process.env.REACT_APP_CHAT_ENGINE_KEY,
                             },
                         })
                         .then(() => setLoading(false))
@@ -66,7 +66,7 @@ function Chats() {
 
             <ChatEngine
                 height="calc(100vh - 66px)"
-                projectID="72231f4e-572a-4842-8660-30fc7ae77cc3"
+                projectID={process.env.REACT_APP_CHAT_ENGINE_ID}
                 userName={user.email}
                 userSecret={user.uid}
             />
