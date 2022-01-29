@@ -8,7 +8,6 @@ function Chats() {
     const history = useHistory();
     const [loading, setLoading] = useState(true);
     const { user } = useAuth();
-    console.log(user);
     const handleLogout = async () => {
         await auth.signOut();
         history.push("/");
